@@ -45,7 +45,7 @@ export default {
 
 <style lang="scss">
 body {
-  height: 200vh;
+  /*min-height: 200vh;*/
 }
 #app {
   display: grid;

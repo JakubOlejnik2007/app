@@ -14,7 +14,7 @@ export default {
 div {
   box-sizing: border-box;
   background-color: #2c3e50;
-  height: 100px;
+  min-height: 100px;
   margin-top: 20px;
   padding: 5px;
 }

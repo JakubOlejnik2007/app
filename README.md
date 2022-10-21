@@ -20,5 +20,5 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Link do strony na serwerze
+Zobacz [nasz projekt](http://www.apphh.ezyro.com).
