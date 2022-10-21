@@ -1,5 +1,8 @@
 <template>
-  <div>copy XYZ</div>
+  <div>
+    <h2>&copy; Jakub Olejnik 2022</h2>
+    <p>Aplikacja wykonana na konkurs Hack Heroes.</p>
+  </div>
 </template>
 
 <script>
@@ -7,3 +10,12 @@ export default {
   name: "MainFooter",
 };
 </script>
+<style lang="scss" scoped>
+div {
+  box-sizing: border-box;
+  background-color: #2c3e50;
+  height: 100px;
+  margin-top: 20px;
+  padding: 5px;
+}
+</style>

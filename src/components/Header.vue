@@ -1,6 +1,6 @@
 <template>
   <header>
-    <img src="/img/logo.png" title="logo" alt="logo" />
+    <img src="@/assets/logo.png" title="logo" alt="logo" />
     <h1>E - Urząd</h1>
   </header>
 </template>

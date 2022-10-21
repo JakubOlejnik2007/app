@@ -1,6 +1,6 @@
 <!-- Widok lgoowania -->
 <template>
-  <div></div>
+  <div>asdas</div>
 </template>
 
 <script>
