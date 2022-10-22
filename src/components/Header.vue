@@ -21,7 +21,12 @@ header {
   align-items: center;
   justify-content: space-evenly;
   img {
+    box-sizing: border-box;
     height: 25vh;
+    background-color: #f7cac9;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 60px;
   }
 }
 </style>

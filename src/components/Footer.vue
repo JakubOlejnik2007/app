@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h2>&copy; Jakub Olejnik 2022</h2>
+    <h2>
+      &copy; Jakub Olejnik, Dominik Wielgus, Mikołaj Borys, Jakub Bocheński,
+      Jakub Kołomański 2022
+    </h2>
     <p>Aplikacja wykonana na konkurs Hack Heroes.</p>
   </div>
 </template>

@@ -1,24 +1,9 @@
-# app
+# Aplikacja E-Urząd
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+## O aplikacji
+Aplikacja E- Urząd służy do wypełniania wniosków oraz wysyłania ich od
+razu do urzędu. Użycie aplikacji pozwala zaoszczędzić wiecle czasu na
+szukaniu wzorów wniosków oraz dostarczaniu i do urzędu.
 
 ## Link do strony na serwerze
 Zobacz [nasz projekt](http://www.apphh.ezyro.com).
