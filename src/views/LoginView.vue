@@ -1,6 +1,5 @@
 <!-- Widok lgoowania -->
 <template>
-  {{ this.response }}
   <div class="center">
     <h2>Logowanie</h2>
     <form @submit="onSubmit">
@@ -51,14 +50,12 @@ export default {
         alert("Niepoprawne hasło!");
         return;
       }
-      console.log("");
       const LoginData = {
         operation: "LOGIN",
         id: Math.floor(Math.random() * 100000),
         email: this.email,
         password: this.password,
       };
-      console.log(LoginData);
       fetch("http://apphh.ezyro.com/api.php", {
         //mode: "no-cors",
         method: "POST",
@@ -70,7 +67,6 @@ export default {
         .then((response) => response.json())
         .then((json) => (this.response = json));
       let res = this.response;
-      console.log(res);
       if (res[0]["message"] === "Failed") {
         document.getElementById("error").innerHTML =
           '<span style="color:#ff0000;"> Failed to log in </span>';
@@ -82,6 +78,9 @@ export default {
         });
 
         window.sessionStorage.setItem("isLogged", "1");
+
+        document.location.reload(true);
+        setTimeout(1000);
         location.replace("http://apphh.ezyro.com/#/account");
       }
     },

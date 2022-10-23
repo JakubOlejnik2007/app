@@ -1,5 +1,4 @@
 <template>
-  {{ this.response }}
   <div class="center">
     <h2>Rejestracja</h2>
     <form @submit="onSubmit">
@@ -23,6 +22,10 @@
       <div class="signup_link">
         Masz już konto? <a href="#/zaloguj"><h3>Zaloguj się</h3></a>
       </div>
+      <p>
+        * jeżeli nie nastąpiło automatyczne przekierowanie na stronę logowania
+        należy przejść tam poprzez przycisk "zaloguj" na pasku nawigacyjnym
+      </p>
       <div id="error"></div>
     </form>
   </div>

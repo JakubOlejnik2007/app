@@ -1,7 +1,7 @@
 <!-- Widok konta -->
 <template>
   <div class="center">
-    <form @submit="onsubmit">
+    <form @submit="onSubmit">
       <h2>Panel użytkownika</h2>
       <div class="account">
         <div>
@@ -20,11 +20,11 @@
           </p>
           <p>
             <label>Numer PESEL</label>
-            <input type="number" v-model="pesel" max="99999999999" />
+            <input type="text" v-model="pesel" />
           </p>
           <p>
             <label>Data urodzenia</label>
-            <input type="date" v-model="data_urodzenia" />
+            <input type="text" v-model="data_urodzenia" />
           </p>
           <p>
             <label>Miejsce urodzenia</label>
@@ -89,6 +89,7 @@ export default {
   name: "AccountView",
   data() {
     return {
+      id: sessionStorage.getItem("id"),
       imie: sessionStorage.getItem("imie"),
       imiona: sessionStorage.getItem("imiona"),
       nazwisko: sessionStorage.getItem("nazwisko"),
@@ -111,20 +112,6 @@ export default {
   methods: {
     onSubmit(e) {
       e.preventDefault();
-      if (!this.email || !this.password) {
-        alert("Niektóre pola w formularzy pozostają puste!");
-        return;
-      }
-      let mail_format = new RegExp(/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/);
-      if (mail_format.test(this.email)) {
-        alert("Niepoprawny adres e-mail!");
-        return;
-      }
-      let password_format = new RegExp(/^(?=.*?[0-9])(?=.*?[a-zA-Z]).{3,30}$/);
-      if (!password_format.test(this.password)) {
-        alert("Niepoprawne hasło!");
-        return;
-      }
       console.log("");
       const UpdataData = {
         id: this.id,
@@ -156,6 +143,14 @@ export default {
       })
         .then((response) => response.json())
         .then((json) => (this.response = json));
+      let res = this.response;
+      res.forEach((obj) => {
+        Object.entries(obj).forEach(([key, value]) => {
+          window.sessionStorage.setItem(key, value);
+        });
+      });
+      document.location.reload(true);
+      document.location.reload(true);
     },
   },
 };

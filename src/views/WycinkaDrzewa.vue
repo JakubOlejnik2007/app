@@ -25,6 +25,12 @@
 <script>
 export default {
   name: "wycinka-drzewa.vue",
+  data() {
+    return {
+      imie: sessionStorage.getItem("imie"),
+      nazwisko: sessionStorage.getItem("nazwisko"),
+    };
+  },
 };
 </script>
 
@@ -39,7 +45,16 @@ export default {
   p {
     text-align: left;
   }
-
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    input {
+      border-radius: 15px;
+      padding: 5px;
+      text-align: center;
+    }
+  }
   .heading {
     display: flex;
     justify-content: space-evenly;
@@ -49,5 +64,10 @@ export default {
       border-radius: 30px;
     }
   }
+}
+input[type="submit"] {
+  border-radius: 15px;
+  padding: 5px;
+  text-align: center;
 }
 </style>
