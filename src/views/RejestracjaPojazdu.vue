@@ -1,5 +1,14 @@
+<!-- kiedy zamierzasz coś zrobić? -->
 <template>
   <div class="rejestracja_pojazdu">
+    <div class="heading">
+      <h2>Wniosek o rejestrację pojazdu</h2>
+      <img
+        src="@/assets/car.png"
+        alt="Wniosek o rejestrację pojazdu"
+        title="Wniosek o rejestrację pojazdu"
+      />
+    </div>
     <form>
       <p>
         <label for="imie">Imie</label>
@@ -31,11 +40,12 @@
         >
         <input type="text" id="pesel_lub_region" />
       </p>
-      <p style="display: inline-block">
+      <p>
         Wnoszę o rejstrację - czasową rejstrację
         <label for="cel"> w celu </label>
         <input type="text" id="cel" />
-        -wyrejestrowanie i zawiadamiam o nabyciu/zbyciu następującego pojazdu:
+        -&nbsp;wyrejestrowanie i zawiadamiam o nabyciu/zbyciu następującego
+        pojazdu:
       </p>
       <p>
         <label for="rodzaj">1. Rodzaj pojazdu i przeznaczenie</label>
@@ -71,39 +81,17 @@
         <label for="pojazd"> pojazdu </label>
         <input type="text" id="pojazd" />
       </p>
-      <p>Do wniosku załączam następujące dokumenty:</p>
-      <p>
-        <label for="1">1. </label>
-        <input type="text" id="1" />
-      </p>
-      <p>
-        <label for="2">2. </label>
-        <input type="text" id="2" />
-      </p>
-      <p>
-        <label for="3">3. </label>
-        <input type="text" id="3" />
-      </p>
-      <p>
-        <label for="4">4. </label>
-        <input type="text" id="4" />
-      </p>
-      <p>
-        <label for="5">5. </label>
-        <input type="text" id="5" />
-      </p>
-      <p>
-        <label for="6">6. </label>
-        <input type="text" id="6" />
-      </p>
       <p>
         Wnoszę o wydanie tablic rejestracyjnych indywidualnych o następującym
         wyróżniku
         <label for="tablice_rejestr"> pojazdu: </label>
         <input type="text" id="tablice_rejestr" />
       </p>
-      <p>Wnoszę o wydanie tablic samochodowych zmniejszonych:</p>
-      <input type="submit" value="Submit" />
+      <p>
+        Oświadczam, że podane we wniosku dane i informacje są aktualne i zgodne
+        ze stanem faktycznym.
+      </p>
+      <input type="submit" value="submit" />
     </form>
   </div>
 </template>
@@ -116,13 +104,24 @@ export default {
 
 <style lang="scss" scoped>
 .rejestracja_pojazdu {
+  box-sizing: border-box;
   background-color: #2c3e50;
-  padding: 20px;
-  margin: 15px;
-  color: #f7cac9;
+  padding: 10px;
+  margin: 10px;
+  color: beige;
   border-radius: 30px;
   p {
     text-align: left;
+  }
+
+  .heading {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    img {
+      background-color: beige;
+      border-radius: 30px;
+    }
   }
 }
 </style>

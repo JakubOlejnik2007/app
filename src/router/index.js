@@ -4,6 +4,7 @@ import HomeView from "../views/HomeView.vue";
 import WycinkaDrzewa from "../views/WycinkaDrzewa.vue";
 import RejestracjaPojazdu from "../views/RejestracjaPojazdu.vue";
 import LoginView from "../views/LoginView.vue";
+import RegisterView from "../views/RegisterView.vue";
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: "/zaloguj",
     name: "zaloguj",
     component: LoginView,
+  },
+  {
+    path: "/zarejestruj",
+    name: "zarejestruj",
+    component: RegisterView,
   },
 ];
 

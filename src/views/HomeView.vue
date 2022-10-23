@@ -31,15 +31,26 @@
   </div>
 </template>
 <style lang="scss" scoped>
+@media screen and (min-width: 768px) {
+  .about {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+@media screen and (max-width: 767px) {
+  .about {
+    margin: 15px;
+  }
+}
 .about {
   background-color: #2c3e50;
   padding: 20px;
-  margin: 15px;
-  color: #f7cac9;
+  color: beige;
   border-radius: 30px;
 
   img {
-    background-color: #f7cac9;
+    background-color: beige;
     padding: 10px;
     border-radius: 60px;
   }

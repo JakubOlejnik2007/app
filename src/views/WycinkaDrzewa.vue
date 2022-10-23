@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wycinka-drzewa">
     <form>
       <label for="miejscowosc">Miejscowość</label>
       <input type="text" id="miejscowosc" />
@@ -28,4 +28,26 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.wycinka-drzewa {
+  box-sizing: border-box;
+  background-color: #2c3e50;
+  padding: 10px;
+  margin: 10px;
+  color: beige;
+  border-radius: 30px;
+  p {
+    text-align: left;
+  }
+
+  .heading {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    img {
+      background-color: beige;
+      border-radius: 30px;
+    }
+  }
+}
+</style>

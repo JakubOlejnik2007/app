@@ -1,23 +1,27 @@
-<!-- Widok lgoowania -->
 <template>
   {{ this.response }}
   <div class="center">
-    <h2>Logowanie</h2>
+    <h2>Rejestracja</h2>
     <form @submit="onSubmit">
       <div class="txt_field">
         <input type="email" required v-model="email" />
         <span></span>
-        <label>e-mail</label>
+        <label>email</label>
       </div>
       <div class="txt_field">
         <input type="password" required v-model="password" />
         <span></span>
         <label>Hasło</label>
       </div>
-      <input type="submit" value="Logowanie" />
+      <div class="txt_field">
+        <input type="password" required v-model="con_password" />
+        <span></span>
+        <label>Powtórz hasło</label>
+      </div>
+      <input type="submit" value="Zarejestruj" />
       <span></span>
       <div class="signup_link">
-        Nie masz konta? <a href="/#/zarejestruj"><h3>Zarejestruj się</h3></a>
+        Masz już konto? <a href="#/zaloguj"><h3>Zaloguj się</h3></a>
       </div>
       <div id="error"></div>
     </form>
@@ -26,11 +30,12 @@
 
 <script>
 export default {
-  name: "LoginView",
+  name: "RegisterView",
   data() {
     return {
       email: "",
       password: "",
+      con_password: "",
       response: "",
     };
   },
@@ -43,45 +48,42 @@ export default {
       }
       let mail_format = new RegExp(/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/);
       if (mail_format.test(this.email)) {
-        alert("Niepoprawny adres e-mail!");
+        alert("Błędny adres e-mail!");
         return;
       }
       let password_format = new RegExp(/^(?=.*?[0-9])(?=.*?[a-zA-Z]).{3,30}$/);
       if (!password_format.test(this.password)) {
-        alert("Niepoprawne hasło!");
+        alert("Błędne hasło");
         return;
       }
-      console.log("");
-      const LoginData = {
-        operation: "LOGIN",
+      if (this.password !== this.con_password) {
+        alert("Podane hasła są różne");
+        return;
+      }
+      console.log(this.email, this.password);
+      const RegisterData = {
+        operation: "REGISTER",
         id: Math.floor(Math.random() * 100000),
         email: this.email,
         password: this.password,
       };
-      console.log(LoginData);
       fetch("http://apphh.ezyro.com/api.php", {
         //mode: "no-cors",
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=UTF-8; ",
         },
-        body: JSON.stringify(LoginData),
+        body: JSON.stringify(RegisterData),
       })
         .then((response) => response.json())
         .then((json) => (this.response = json));
-      let res = this.response;
-      if (res[0]["message"] === "Failed") {
-        document.getElementById("error").innerHTML =
-          '<span style="color:#ff0000;"> Failed to log in </span>';
-      } else {
-        res.forEach((obj) => {
-          Object.entries(obj).forEach(([key, value]) => {
-            window.sessionStorage.setItem(key, value);
-          });
-        });
+      //console.log(LoginData.email, LoginData.password);
 
-        window.sessionStorage.setItem("isLogged", "1");
-        location.replace("http://apphh.ezyro.com/#/account");
+      if (this.response[0]["message"] === "This user already exists") {
+        document.getElementById("error").innerHTML =
+          '<span style="color:#ff0000;">Taki użytkownik już istnieje!</span>';
+      } else {
+        location.replace("http://apphh.ezyro.com/#/zaloguj");
       }
     },
   },
@@ -89,6 +91,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/*$color1 : #42b983;
+$mainfontcolor : #f7cac9;
+$color2: #2c3e50;
+*/
 .center {
   margin-left: auto;
   margin-right: auto;
@@ -104,64 +110,64 @@ export default {
   h3 {
     font-size: 12.8px;
   }
-
   form {
     padding: 0 40px;
     box-sizing: border-box;
-    .txt_field {
-      position: relative;
-      border-bottom: 2px solid #44cae8;
-      margin: 30px 0;
-      input {
+  }
+  .txt_field {
+    position: relative;
+    border-bottom: 2px solid #44cae8;
+    margin: 30px 0;
+    input {
+      width: 100%;
+      padding: 0 5px;
+      height: 40px;
+      font-size: 16px;
+      border: none;
+      background: none;
+      outline: none;
+      color: beige;
+      &:focus ~ label,
+      &:valid ~ label {
+        top: -12px;
+        color: #42b983;
+      }
+      &:focus ~ span::before,
+      &:valid ~ span::before {
         width: 100%;
-        padding: 0 5px;
-        height: 40px;
-        font-size: 16px;
-        border: none;
-        background: none;
-        outline: none;
-        color: beige;
-        &:focus ~ label,
-        &:valid ~ label {
-          top: -12px;
-          color: #42b983;
-        }
-        &:focus ~ span::before,
-        &:valid ~ span::before {
-          width: 100%;
-        }
       }
-      label {
-        position: absolute;
-        top: 50%;
-        left: 5px;
-        color: #adadad;
-        transform: translateY(-50);
-        font-size: 16px;
-        pointer-events: none;
-        transition: 0.25s;
-      }
-      span::before {
-        content: "";
-        position: absolute;
-        top: 40px;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background: #2282c3;
-        transition: 0.5s;
-      }
+    }
+    label {
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      color: #adadad;
+      transform: translateY(-50);
+      font-size: 16px;
+      pointer-events: none;
+      transition: 0.25s;
+    }
+    span::before {
+      content: "";
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #2282c3;
+      transition: 0.5s;
     }
   }
 }
 .pass {
   margin: -5px 0 20px 5px;
-  color: beige;
+  color: #a6a6a6;
   cursor: pointer;
   &:hover {
     text-decoration: underline;
   }
 }
+
 input[type="submit"] {
   width: 100%;
   height: 50px;
@@ -169,7 +175,7 @@ input[type="submit"] {
   background-color: #42b983;
   border-radius: 25px;
   font-size: 18px;
-  color: beige;
+  color: #d6d8d8;
   font-weight: 700;
   cursor: pointer;
   outline: none;
@@ -178,6 +184,7 @@ input[type="submit"] {
     transition: 0.25s;
   }
 }
+
 .signup_link {
   margin: 30px 0;
   text-align: center;
@@ -188,7 +195,4 @@ input[type="submit"] {
     text-decoration: none;
   }
 }
-/*.signup_link a:hover{
-    text-decoration: underline;
-}*/
 </style>

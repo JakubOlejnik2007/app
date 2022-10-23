@@ -11,7 +11,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 header {
   width: 100%;
   box-sizing: border-box;
@@ -23,7 +23,7 @@ header {
   img {
     box-sizing: border-box;
     height: 25vh;
-    background-color: #f7cac9;
+    background-color: beige;
     padding: 10px;
     margin: 20px 0;
     border-radius: 60px;
