@@ -70,6 +70,7 @@ export default {
         .then((response) => response.json())
         .then((json) => (this.response = json));
       let res = this.response;
+      console.log(res);
       if (res[0]["message"] === "Failed") {
         document.getElementById("error").innerHTML =
           '<span style="color:#ff0000;"> Failed to log in </span>';

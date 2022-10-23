@@ -22,7 +22,6 @@
     >
   </nav>
   <main>
-    <p>{{ this.isLogged }}</p>
     <router-view />
   </main>
   <footer>
